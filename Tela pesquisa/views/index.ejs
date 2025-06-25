@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Livrando - Resultados</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Ícones (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-dO1Xh9/6ZFVfGiOtjh/yumC6z/paK0Ar2j3+Q1BbfRxUslVksZbR7dAYbmcMfIv6bRrJ//z6kzp5hVMEqJyzOA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+
+  <!-- Menu hambúrguer fixo no canto esquerdo, abaixo do cabeçalho -->
+  <div class="menu-toggle" id="menu-toggle">
+    &#9776;
+  </div>
+
+  <!-- Cabeçalho -->
+  <header class="topo">
+    <h1>Livrando</h1>
+
+    <div class="busca">
+      <input type="text" placeholder="Pesquise algo" />
+      <button>🔍</button>
+    </div>
+
+    <nav>
+      <a href="#">Categorias</a>
+      <a href="#">Autores Populares</a>
+      <a href="#">Dicas de Livros</a>
+      <a href="#">Livros em Alta</a>
+      <a href="#">Livros por idioma</a>
+    </nav>
+
+    <div class="icones">
+      <i class="fas fa-plus-circle"></i>
+      <i class="fas fa-clock"></i>
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-comment-dots"></i>
+      <i class="fas fa-search"></i>
+    </div>
+  </header>
+
+  <!-- Menu lateral oculto -->
+  <aside id="side-menu" class="side-menu">
+    <div class="close-btn" id="close-btn">✖</div>
+    <h2>Filtrar conteúdo</h2>
+    <div class="filtro">
+      <h3>Gênero</h3>
+      <label><input type="checkbox"> Romance</label>
+      <label><input type="checkbox"> Aventura</label>
+      <label><input type="checkbox"> Ficção</label>
+      <label><input type="checkbox"> História</label>
+    </div>
+  </aside>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <h2><%= livros.length %> resultados para "<%= termoBusca %>"</h2>
+
+    <section class="livros">
+      <% livros.forEach(livro => { %>
+        <div class="livro">
+          <img src="<%= livro.imagem %>" alt="Capa do livro" />
+          <h3><%= livro.titulo %></h3>
+          <p class="preco">R$ <%= livro.preco %></p>
+        </div>
+      <% }) %>
+    </section>
+  </main>
+
+  <!-- Script para o menu funcionar -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const sideMenu = document.getElementById('side-menu');
+    const closeBtn = document.getElementById('close-btn');
+
+    menuToggle.addEventListener('click', () => {
+      sideMenu.classList.add('open');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      sideMenu.classList.remove('open');
+    });
+  </script>
+
+</body>
+</html>
