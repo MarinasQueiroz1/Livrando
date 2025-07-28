@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulário Livrando</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kenia&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-top" role="banner">
+      <div class="logo" aria-label="Logo Livrando">Livrando</div>
+      <div class="search-container">
+        <input type="search" placeholder="Pesquisar algo" aria-label="Pesquisar algo" />
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.12 5.1 12.59 2.5 9.5 2.5S3.88 5.1 3.88 8.39c0 3.29 2.53 5.89 5.62 5.89a6.471 6.471 0 005.34-1.48l.27.28v.79l4.75 4.75 1.42-1.42-4.75-4.74zM9.5 13c-2.44 0-4.41-2-4.41-4.5S7.06 4 9.5 4s4.41 2 4.41 4.5S11.94 13 9.5 13z"/>
+        </svg>
+
+      </div>
+    </div>
+
+      <div class="linha-branca"></div>
+    
+    <nav aria-label="Menu principal">
+      <ul class="nav-list" role="list">
+        <li tabindex="0">Categorias</li>
+        <li tabindex="0">Autores Populares</li>
+        <li tabindex="0">Dicas de Livros</li>
+        <li tabindex="0">Livros em Alta</li>
+        <li tabindex="0">Livros por idioma</li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="form-container" role="region" aria-labelledby="form-title">
+      <h2 id="form-title">Preencha os dados abaixo</h2>
+      <form novalidate>
+        <div class="field-group">
+          <label for="titulo">Título do livro</label>
+          <input id="titulo" name="titulo" type="text" placeholder="Digite aqui" autocomplete="off" />
+        </div>
+        <div class="field-group">
+          <label for="autor">Autor</label>
+          <input id="autor" name="autor" type="text" placeholder="Digite aqui" autocomplete="off" />
+        </div>
+        <div class="field-group">
+          <label for="editora">Editora</label>
+          <input id="editora" name="editora" type="text" placeholder="Digite aqui" autocomplete="off" />
+        </div>
+        <div class="field-group">
+          <label for="sinopse">Sinopse</label>
+          <textarea id="sinopse" name="sinopse" placeholder="Digite aqui" rows="6"></textarea>
+        </div>
+
+        <div class="field-group image-cover-container">
+          <div class="image-upload-header">
+            <span>Imagem de capa</span>
+            <button type="button" class="choose-image-btn" aria-label="Escolher imagem de capa">Escolher imagem</button>
+          </div>
+          <div class="image-box" style="height: 220px;">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cd1896de-c31e-4dd3-a912-0e16181131ea.png" alt="Business Book Cover" class="image-cover" onerror="this.style.display='none';" />
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="image-upload-header">
+            <span>Imagens extras</span>
+            <button type="button" class="choose-image-btn" aria-label="Escolher imagens extras">Escolher imagem</button>
+          </div>
+          <div class="image-extras-container" style="min-height:180px;">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c8ccf125-5a99-4dcf-8ddc-d3d7cd6a1ebd.png" alt="Extra Cover 1" class="image-extra" onerror="this.style.display='none';" />
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/120edd7c-86b1-45f5-9971-fcc54faf558a.png" alt="Extra Cover 2" class="image-extra" onerror="this.style.display='none';" />
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/292cbf44-8efb-4214-af70-0edd5482787d.png" alt="Extra Cover 3" class="image-extra" onerror="this.style.display='none';" />
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <button type="reset" class="btn-cancel">Cancelar</button>
+          <button type="submit" class="btn-publish">Publicar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
