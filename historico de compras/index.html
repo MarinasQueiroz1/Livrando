@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Histórico de Compras - Livranda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Kenia&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Header -->
+  <header class="bg-violet-600 text-white px-6 py-4 flex flex-col md:flex-row md:items-center md:justify-between shadow-md">
+   
+
+      <h1 class="text-3xl font-extrabold tracking-tight select-none" style="font-family: 'Kenia', cursive;">
+        Livrando
+      </h1>
+    
+      <div class="relative w-72 md:w-96">
+        <input
+          type="search"
+          placeholder="Pesquise algo"
+          class="w-full rounded-full py-2 px-4 pr-10 text-gray-900 focus:outline-none focus:ring-2 focus:ring-violet-400"
+          aria-label="Pesquise algo"
+        />
+        <button
+          aria-label="Buscar"
+          class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-violet-400 hover:bg-violet-500 rounded-full p-1.5 text-white focus:outline-none focus:ring-2 focus:ring-violet-300"
+          type="submit"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <nav class="mt-3 md:mt-0 flex items-center gap-6 text-lg" aria-label="Menu principal">
+      <button aria-label="Adicionar" class="hover:text-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 4v16m8-8H4" />
+        </svg>
+      </button>
+      <button aria-label="Histórico" class="hover:text-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 8v4l3 3m6 3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </button>
+      <button aria-label="Favoritos" class="hover:text-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M5 15l7-7 7 7" />
+        </svg>
+      </button>
+      <button aria-label="Mensagens" class="hover:text-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-6l-4 4v-4H7a2 2 0 01-2-2v-2" />
+        </svg>
+      </button>
+      <button aria-label="Perfil" class="hover:text-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M5.121 17.804A9 9 0 1118.88 6.196M12 12v.01"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+
+
+
+  <!-- Secondary menu -->
+  <nav aria-label="Submenu navegação" class="bg-violet-500 text-white text-sm px-6 py-2 flex gap-6 select-none shadow-sm">
+    <a href="#" class="hover:underline focus:underline focus:outline-none" tabindex="0">Categorias</a>
+    <a href="#" class="hover:underline focus:underline focus:outline-none" tabindex="0">Autores Populares</a>
+    <a href="#" class="hover:underline focus:underline focus:outline-none" tabindex="0">Dicas de Livros</a>
+    <a href="#" class="hover:underline focus:underline focus:outline-none" tabindex="0">Livros em Alta</a>
+    <a href="#" class="hover:underline focus:underline focus:outline-none" tabindex="0">Livros por idioma</a>
+  </nav>
+
+  <!-- Container centralizado com histórico e cards -->
+  <div class="main-container flex justify-center px-4 bg-gray-100">
+    <main class="bg-white w-full max-w-3xl rounded-t-xl shadow-lg p-8 space-y-6">
+      <h2 class="font-semibold text-2xl text-center text-gray-900 select-none">Histórico de compras</h2>
+
+      <section aria-label="Lista de compras" class="flex flex-col gap-6">
+        <!-- Todos os cards aqui -->
+        <article tabindex="0" class="bg-white shadow-lg rounded-lg p-5 flex gap-6 focus:outline-none focus:ring-4 focus:ring-violet-300" aria-describedby="descricao-livro-1">
+          <div class="flex-shrink-0 rounded-lg overflow-hidden w-32 h-40 bg-gray-200 relative">
+            <img
+              src="https://marketplace.canva.com/EAGKf0t5FgE/1/0/1003w/canva-blue-and-yellow-profesional-business-book-cover-uFAmQUd7kVg.jpg" alt="Capa do livro" class="w-full h-auto rounded mb-2">
+              alt="Capa do livro com design geométrico abstrato nas cores amarela e verde"
+              class="object-cover w-full h-full"
+              onerror="this.onerror=null; this.src='https://placehold.co/128x160?text=Imagem+Indisponivel';"
+            />
+          </div>
+          <div class="flex flex-col flex-grow overflow-hidden">
+            <div class="text-left">
+              <h3 class="font-bold text-gray-900 leading-tight select-text">Nome do Livro</h3>
+              <p class="text-sm font-semibold text-gray-600 mb-2 select-text">Nome do vendedor</p>
+              <p id="descricao-livro-1" class="text-xs text-gray-600 overflow-hidden line-clamp-5 select-text" style="-webkit-line-clamp: 5;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat dolor ut est rutrum, nec tempor lorem mattis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sem non sem lobortis, id commodo felis eleifend.
+                Donec tincidunt laoreet gravida. Pellentesque non consectetur nisi, posuere tincidunt elit. Aenean at arcu quis leo rhoncus elementum.
+                Nulla aliquam quam non nunc finibus semper. In hac habitasse platea dictumst.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between items-end text-right select-text">
+            <time datetime="9999-09-09" class="text-xs text-gray-400 select-text">99/99/9999</time>
+            <p class="text-lg font-extrabold text-violet-600 mt-6 select-text">R$ 999,00</p>
+          </div>
+        </article>
+
+        <!-- Repita os cards abaixo conforme sua necessidade -->
+
+        <article tabindex="0" class="bg-white shadow-lg rounded-lg p-5 flex gap-6 focus:outline-none focus:ring-4 focus:ring-violet-300" aria-describedby="descricao-livro-2">
+          <div class="flex-shrink-0 rounded-lg overflow-hidden w-32 h-40 bg-gray-200 relative">
+            <img
+               src="https://marketplace.canva.com/EAGKf0t5FgE/1/0/1003w/canva-blue-and-yellow-profesional-business-book-cover-uFAmQUd7kVg.jpg" alt="Capa do livro" class="w-full h-auto rounded mb-2">
+
+              alt="Capa do livro com design geométrico abstrato nas cores amarela e verde"
+              class="object-cover w-full h-full"
+              onerror="this.onerror=null; this.src='https://placehold.co/128x160?text=Imagem+Indisponivel';"
+            />
+          </div>
+          <div class="flex flex-col flex-grow overflow-hidden">
+            <div class="text-left">
+              <h3 class="font-bold text-gray-900 leading-tight select-text">Nome do Livro</h3>
+              <p class="text-sm font-semibold text-gray-600 mb-2 select-text">Nome do vendedor</p>
+              <p id="descricao-livro-2" class="text-xs text-gray-600 overflow-hidden line-clamp-5 select-text" style="-webkit-line-clamp: 5;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat dolor ut est rutrum, nec tempor lorem mattis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sem non sem lobortis, id commodo felis eleifend.
+                Donec tincidunt laoreet gravida. Pellentesque non consectetur nisi, posuere tincidunt elit. Aenean at arcu quis leo rhoncus elementum.
+                Nulla aliquam quam non nunc finibus semper. In hac habitasse platea dictumst.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between items-end text-right select-text">
+            <time datetime="9999-09-09" class="text-xs text-gray-400 select-text">99/99/9999</time>
+            <p class="text-lg font-extrabold text-violet-600 mt-6 select-text">R$ 999,00</p>
+          </div>
+        </article>
+   
+         <article tabindex="0" class="bg-white shadow-lg rounded-lg p-5 flex gap-6 focus:outline-none focus:ring-4 focus:ring-violet-300" aria-describedby="descricao-livro-2">
+          <div class="flex-shrink-0 rounded-lg overflow-hidden w-32 h-40 bg-gray-200 relative">
+            <img
+              src="https://marketplace.canva.com/EAGKf0t5FgE/1/0/1003w/canva-blue-and-yellow-profesional-business-book-cover-uFAmQUd7kVg.jpg" alt="Capa do livro" class="w-full h-auto rounded mb-2">
+              alt="Capa do livro com design geométrico abstrato nas cores amarela e verde"
+              class="object-cover w-full h-full"
+              onerror="this.onerror=null; this.src='https://placehold.co/128x160?text=Imagem+Indisponivel';"
+            />
+          </div>
+          <div class="flex flex-col flex-grow overflow-hidden">
+            <div class="text-left">
+              <h3 class="font-bold text-gray-900 leading-tight select-text">Nome do Livro</h3>
+              <p class="text-sm font-semibold text-gray-600 mb-2 select-text">Nome do vendedor</p>
+              <p id="descricao-livro-2" class="text-xs text-gray-600 overflow-hidden line-clamp-5 select-text" style="-webkit-line-clamp: 5;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat dolor ut est rutrum, nec tempor lorem mattis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sem non sem lobortis, id commodo felis eleifend.
+                Donec tincidunt laoreet gravida. Pellentesque non consectetur nisi, posuere tincidunt elit. Aenean at arcu quis leo rhoncus elementum.
+                Nulla aliquam quam non nunc finibus semper. In hac habitasse platea dictumst.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between items-end text-right select-text">
+            <time datetime="9999-09-09" class="text-xs text-gray-400 select-text">99/99/9999</time>
+            <p class="text-lg font-extrabold text-violet-600 mt-6 select-text">R$ 999,00</p>
+          </div>
+        </article>
+
+        <article tabindex="0" class="bg-white shadow-lg rounded-lg p-5 flex gap-6 focus:outline-none focus:ring-4 focus:ring-violet-300" aria-describedby="descricao-livro-2">
+          <div class="flex-shrink-0 rounded-lg overflow-hidden w-32 h-40 bg-gray-200 relative">
+            <img
+              src="https://marketplace.canva.com/EAGKf0t5FgE/1/0/1003w/canva-blue-and-yellow-profesional-business-book-cover-uFAmQUd7kVg.jpg" alt="Capa do livro" class="w-full h-auto rounded mb-2">
+              alt="Capa do livro com design geométrico abstrato nas cores amarela e verde"
+              class="object-cover w-full h-full"
+              onerror="this.onerror=null; this.src='https://placehold.co/128x160?text=Imagem+Indisponivel';"
+            />
+          </div>
+          <div class="flex flex-col flex-grow overflow-hidden">
+            <div class="text-left">
+              <h3 class="font-bold text-gray-900 leading-tight select-text">Nome do Livro</h3>
+              <p class="text-sm font-semibold text-gray-600 mb-2 select-text">Nome do vendedor</p>
+              <p id="descricao-livro-2" class="text-xs text-gray-600 overflow-hidden line-clamp-5 select-text" style="-webkit-line-clamp: 5;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat dolor ut est rutrum, nec tempor lorem mattis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sem non sem lobortis, id commodo felis eleifend.
+                Donec tincidunt laoreet gravida. Pellentesque non consectetur nisi, posuere tincidunt elit. Aenean at arcu quis leo rhoncus elementum.
+                Nulla aliquam quam non nunc finibus semper. In hac habitasse platea dictumst.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between items-end text-right select-text">
+            <time datetime="9999-09-09" class="text-xs text-gray-400 select-text">99/99/9999</time>
+            <p class="text-lg font-extrabold text-violet-600 mt-6 select-text">R$ 999,00</p>
+          </div>
+        </article>
+
+        <article tabindex="0" class="bg-white shadow-lg rounded-lg p-5 flex gap-6 focus:outline-none focus:ring-4 focus:ring-violet-300" aria-describedby="descricao-livro-2">
+          <div class="flex-shrink-0 rounded-lg overflow-hidden w-32 h-40 bg-gray-200 relative">
+            <img
+               src="https://marketplace.canva.com/EAGKf0t5FgE/1/0/1003w/canva-blue-and-yellow-profesional-business-book-cover-uFAmQUd7kVg.jpg" alt="Capa do livro" class="w-full h-auto rounded mb-2">
+              alt="Capa do livro com design geométrico abstrato nas cores amarela e verde"
+              class="object-cover w-full h-full"
+              onerror="this.onerror=null; this.src='https://placehold.co/128x160?text=Imagem+Indisponivel';"
+            />
+          </div>
+          <div class="flex flex-col flex-grow overflow-hidden">
+            <div class="text-left">
+              <h3 class="font-bold text-gray-900 leading-tight select-text">Nome do Livro</h3>
+              <p class="text-sm font-semibold text-gray-600 mb-2 select-text">Nome do vendedor</p>
+              <p id="descricao-livro-2" class="text-xs text-gray-600 overflow-hidden line-clamp-5 select-text" style="-webkit-line-clamp: 5;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat dolor ut est rutrum, nec tempor lorem mattis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sem non sem lobortis, id commodo felis eleifend.
+                Donec tincidunt laoreet gravida. Pellentesque non consectetur nisi, posuere tincidunt elit. Aenean at arcu quis leo rhoncus elementum.
+                Nulla aliquam quam non nunc finibus semper. In hac habitasse platea dictumst.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between items-end text-right select-text">
+            <time datetime="9999-09-09" class="text-xs text-gray-400 select-text">99/99/9999</time>
+            <p class="text-lg font-extrabold text-violet-600 mt-6 select-text">R$ 999,00</p>
+          </div>
+        </article>
+
+        <article tabindex="0" class="bg-white shadow-lg rounded-lg p-5 flex gap-6 focus:outline-none focus:ring-4 focus:ring-violet-300" aria-describedby="descricao-livro-2">
+          <div class="flex-shrink-0 rounded-lg overflow-hidden w-32 h-40 bg-gray-200 relative">
+            <img
+               src="https://marketplace.canva.com/EAGKf0t5FgE/1/0/1003w/canva-blue-and-yellow-profesional-business-book-cover-uFAmQUd7kVg.jpg" alt="Capa do livro" class="w-full h-auto rounded mb-2">
+              alt="Capa do livro com design geométrico abstrato nas cores amarela e verde"
+              class="object-cover w-full h-full"
+              onerror="this.onerror=null; this.src='https://placehold.co/128x160?text=Imagem+Indisponivel';"
+            />
+          </div>
+          <div class="flex flex-col flex-grow overflow-hidden">
+            <div class="text-left">
+              <h3 class="font-bold text-gray-900 leading-tight select-text">Nome do Livro</h3>
+              <p class="text-sm font-semibold text-gray-600 mb-2 select-text">Nome do vendedor</p>
+              <p id="descricao-livro-2" class="text-xs text-gray-600 overflow-hidden line-clamp-5 select-text" style="-webkit-line-clamp: 5;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat dolor ut est rutrum, nec tempor lorem mattis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sem non sem lobortis, id commodo felis eleifend.
+                Donec tincidunt laoreet gravida. Pellentesque non consectetur nisi, posuere tincidunt elit. Aenean at arcu quis leo rhoncus elementum.
+                Nulla aliquam quam non nunc finibus semper. In hac habitasse platea dictumst.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between items-end text-right select-text">
+            <time datetime="9999-09-09" class="text-xs text-gray-400 select-text">99/99/9999</time>
+            <p class="text-lg font-extrabold text-violet-600 mt-6 select-text">R$ 999,00</p>
+          </div>
+        </article>
+
+        <article tabindex="0" class="bg-white shadow-lg rounded-lg p-5 flex gap-6 focus:outline-none focus:ring-4 focus:ring-violet-300" aria-describedby="descricao-livro-2">
+          <div class="flex-shrink-0 rounded-lg overflow-hidden w-32 h-40 bg-gray-200 relative">
+            <img
+               src="https://marketplace.canva.com/EAGKf0t5FgE/1/0/1003w/canva-blue-and-yellow-profesional-business-book-cover-uFAmQUd7kVg.jpg" alt="Capa do livro" class="w-full h-auto rounded mb-2">
+              alt="Capa do livro com design geométrico abstrato nas cores amarela e verde"
+              class="object-cover w-full h-full"
+              onerror="this.onerror=null; this.src='https://placehold.co/128x160?text=Imagem+Indisponivel';"
+            />
+          </div>
+          <div class="flex flex-col flex-grow overflow-hidden">
+            <div class="text-left">
+              <h3 class="font-bold text-gray-900 leading-tight select-text">Nome do Livro</h3>
+              <p class="text-sm font-semibold text-gray-600 mb-2 select-text">Nome do vendedor</p>
+              <p id="descricao-livro-2" class="text-xs text-gray-600 overflow-hidden line-clamp-5 select-text" style="-webkit-line-clamp: 5;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat dolor ut est rutrum, nec tempor lorem mattis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sem non sem lobortis, id commodo felis eleifend.
+                Donec tincidunt laoreet gravida. Pellentesque non consectetur nisi, posuere tincidunt elit. Aenean at arcu quis leo rhoncus elementum.
+                Nulla aliquam quam non nunc finibus semper. In hac habitasse platea dictumst.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between items-end text-right select-text">
+            <time datetime="9999-09-09" class="text-xs text-gray-400 select-text">99/99/9999</time>
+            <p class="text-lg font-extrabold text-violet-600 mt-6 select-text">R$ 999,00</p>
+          </div>
+        </article>
+
+        <article tabindex="0" class="bg-white shadow-lg rounded-lg p-5 flex gap-6 focus:outline-none focus:ring-4 focus:ring-violet-300" aria-describedby="descricao-livro-2">
+          <div class="flex-shrink-0 rounded-lg overflow-hidden w-32 h-40 bg-gray-200 relative">
+            <img
+               src="https://marketplace.canva.com/EAGKf0t5FgE/1/0/1003w/canva-blue-and-yellow-profesional-business-book-cover-uFAmQUd7kVg.jpg" alt="Capa do livro" class="w-full h-auto rounded mb-2">
+              alt="Capa do livro com design geométrico abstrato nas cores amarela e verde"
+              class="object-cover w-full h-full"
+              onerror="this.onerror=null; this.src='https://placehold.co/128x160?text=Imagem+Indisponivel';"
+            />
+          </div>
+          <div class="flex flex-col flex-grow overflow-hidden">
+            <div class="text-left">
+              <h3 class="font-bold text-gray-900 leading-tight select-text">Nome do Livro</h3>
+              <p class="text-sm font-semibold text-gray-600 mb-2 select-text">Nome do vendedor</p>
+              <p id="descricao-livro-2" class="text-xs text-gray-600 overflow-hidden line-clamp-5 select-text" style="-webkit-line-clamp: 5;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat dolor ut est rutrum, nec tempor lorem mattis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sem non sem lobortis, id commodo felis eleifend.
+                Donec tincidunt laoreet gravida. Pellentesque non consectetur nisi, posuere tincidunt elit. Aenean at arcu quis leo rhoncus elementum.
+                Nulla aliquam quam non nunc finibus semper. In hac habitasse platea dictumst.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between items-end text-right select-text">
+            <time datetime="9999-09-09" class="text-xs text-gray-400 select-text">99/99/9999</time>
+            <p class="text-lg font-extrabold text-violet-600 mt-6 select-text">R$ 999,00</p>
+          </div>
+        </article>
+
+        <article tabindex="0" class="bg-white shadow-lg rounded-lg p-5 flex gap-6 focus:outline-none focus:ring-4 focus:ring-violet-300" aria-describedby="descricao-livro-2">
+          <div class="flex-shrink-0 rounded-lg overflow-hidden w-32 h-40 bg-gray-200 relative">
+            <img
+               src="https://marketplace.canva.com/EAGKf0t5FgE/1/0/1003w/canva-blue-and-yellow-profesional-business-book-cover-uFAmQUd7kVg.jpg" alt="Capa do livro" class="w-full h-auto rounded mb-2">
+              alt="Capa do livro com design geométrico abstrato nas cores amarela e verde"
+              class="object-cover w-full h-full"
+              onerror="this.onerror=null; this.src='https://placehold.co/128x160?text=Imagem+Indisponivel';"
+            />
+          </div>
+          <div class="flex flex-col flex-grow overflow-hidden">
+            <div class="text-left">
+              <h3 class="font-bold text-gray-900 leading-tight select-text">Nome do Livro</h3>
+              <p class="text-sm font-semibold text-gray-600 mb-2 select-text">Nome do vendedor</p>
+              <p id="descricao-livro-2" class="text-xs text-gray-600 overflow-hidden line-clamp-5 select-text" style="-webkit-line-clamp: 5;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat dolor ut est rutrum, nec tempor lorem mattis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sem non sem lobortis, id commodo felis eleifend.
+                Donec tincidunt laoreet gravida. Pellentesque non consectetur nisi, posuere tincidunt elit. Aenean at arcu quis leo rhoncus elementum.
+                Nulla aliquam quam non nunc finibus semper. In hac habitasse platea dictumst.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between items-end text-right select-text">
+            <time datetime="9999-09-09" class="text-xs text-gray-400 select-text">99/99/9999</time>
+            <p class="text-lg font-extrabold text-violet-600 mt-6 select-text">R$ 999,00</p>
+          </div>
+        </article>
+
+        <article tabindex="0" class="bg-white shadow-lg rounded-lg p-5 flex gap-6 focus:outline-none focus:ring-4 focus:ring-violet-300" aria-describedby="descricao-livro-2">
+          <div class="flex-shrink-0 rounded-lg overflow-hidden w-32 h-40 bg-gray-200 relative">
+            <img
+               src="https://marketplace.canva.com/EAGKf0t5FgE/1/0/1003w/canva-blue-and-yellow-profesional-business-book-cover-uFAmQUd7kVg.jpg" alt="Capa do livro" class="w-full h-auto rounded mb-2">
+              alt="Capa do livro com design geométrico abstrato nas cores amarela e verde"
+              class="object-cover w-full h-full"
+              onerror="this.onerror=null; this.src='https://placehold.co/128x160?text=Imagem+Indisponivel';"
+            />
+          </div>
+          <div class="flex flex-col flex-grow overflow-hidden">
+            <div class="text-left">
+              <h3 class="font-bold text-gray-900 leading-tight select-text">Nome do Livro</h3>
+              <p class="text-sm font-semibold text-gray-600 mb-2 select-text">Nome do vendedor</p>
+              <p id="descricao-livro-2" class="text-xs text-gray-600 overflow-hidden line-clamp-5 select-text" style="-webkit-line-clamp: 5;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat dolor ut est rutrum, nec tempor lorem mattis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sem non sem lobortis, id commodo felis eleifend.
+                Donec tincidunt laoreet gravida. Pellentesque non consectetur nisi, posuere tincidunt elit. Aenean at arcu quis leo rhoncus elementum.
+                Nulla aliquam quam non nunc finibus semper. In hac habitasse platea dictumst.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between items-end text-right select-text">
+            <time datetime="9999-09-09" class="text-xs text-gray-400 select-text">99/99/9999</time>
+            <p class="text-lg font-extrabold text-violet-600 mt-6 select-text">R$ 999,00</p>
+          </div>
+        </article>
+
+        <article tabindex="0" class="bg-white shadow-lg rounded-lg p-5 flex gap-6 focus:outline-none focus:ring-4 focus:ring-violet-300" aria-describedby="descricao-livro-2">
+          <div class="flex-shrink-0 rounded-lg overflow-hidden w-32 h-40 bg-gray-200 relative">
+            <img
+               src="https://marketplace.canva.com/EAGKf0t5FgE/1/0/1003w/canva-blue-and-yellow-profesional-business-book-cover-uFAmQUd7kVg.jpg" alt="Capa do livro" class="w-full h-auto rounded mb-2">
+              alt="Capa do livro com design geométrico abstrato nas cores amarela e verde"
+              class="object-cover w-full h-full"
+              onerror="this.onerror=null; this.src='https://placehold.co/128x160?text=Imagem+Indisponivel';"
+            />
+          </div>
+          <div class="flex flex-col flex-grow overflow-hidden">
+            <div class="text-left">
+              <h3 class="font-bold text-gray-900 leading-tight select-text">Nome do Livro</h3>
+              <p class="text-sm font-semibold text-gray-600 mb-2 select-text">Nome do vendedor</p>
+              <p id="descricao-livro-2" class="text-xs text-gray-600 overflow-hidden line-clamp-5 select-text" style="-webkit-line-clamp: 5;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat dolor ut est rutrum, nec tempor lorem mattis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sem non sem lobortis, id commodo felis eleifend.
+                Donec tincidunt laoreet gravida. Pellentesque non consectetur nisi, posuere tincidunt elit. Aenean at arcu quis leo rhoncus elementum.
+                Nulla aliquam quam non nunc finibus semper. In hac habitasse platea dictumst.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between items-end text-right select-text">
+            <time datetime="9999-09-09" class="text-xs text-gray-400 select-text">99/99/9999</time>
+            <p class="text-lg font-extrabold text-violet-600 mt-6 select-text">R$ 999,00</p>
+          </div>
+        </article>
+
+        <article tabindex="0" class="bg-white shadow-lg rounded-lg p-5 flex gap-6 focus:outline-none focus:ring-4 focus:ring-violet-300" aria-describedby="descricao-livro-2">
+          <div class="flex-shrink-0 rounded-lg overflow-hidden w-32 h-40 bg-gray-200 relative">
+            <img
+               src="https://marketplace.canva.com/EAGKf0t5FgE/1/0/1003w/canva-blue-and-yellow-profesional-business-book-cover-uFAmQUd7kVg.jpg" alt="Capa do livro" class="w-full h-auto rounded mb-2">
+              alt="Capa do livro com design geométrico abstrato nas cores amarela e verde"
+              class="object-cover w-full h-full"
+              onerror="this.onerror=null; this.src='https://placehold.co/128x160?text=Imagem+Indisponivel';"
+            />
+          </div>
+          <div class="flex flex-col flex-grow overflow-hidden">
+            <div class="text-left">
+              <h3 class="font-bold text-gray-900 leading-tight select-text">Nome do Livro</h3>
+              <p class="text-sm font-semibold text-gray-600 mb-2 select-text">Nome do vendedor</p>
+              <p id="descricao-livro-2" class="text-xs text-gray-600 overflow-hidden line-clamp-5 select-text" style="-webkit-line-clamp: 5;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat dolor ut est rutrum, nec tempor lorem mattis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor sem non sem lobortis, id commodo felis eleifend.
+                Donec tincidunt laoreet gravida. Pellentesque non consectetur nisi, posuere tincidunt elit. Aenean at arcu quis leo rhoncus elementum.
+                Nulla aliquam quam non nunc finibus semper. In hac habitasse platea dictumst.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between items-end text-right select-text">
+            <time datetime="9999-09-09" class="text-xs text-gray-400 select-text">99/99/9999</time>
+            <p class="text-lg font-extrabold text-violet-600 mt-6 select-text">R$ 999,00</p>
+          </div>
+        </article>
+
+
+
+
+
+
+        
+
+
+
+
+        <!-- Outros cards aqui... -->
+
+      </section>
+
+      
+    </main>
+  </div>
+
+</body>
+</html>

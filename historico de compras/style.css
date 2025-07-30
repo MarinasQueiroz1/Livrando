@@ -1,0 +1,20 @@
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  min-height: auto; 
+  padding-top: 0; 
+}
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #9260AF; /* Tailwind violet-400 */
+  border-radius: 10px;
+}
+
+article {
+  margin: 10px 0; /* Improve spacing between cards */
+}
